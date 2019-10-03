@@ -10,10 +10,8 @@ services:
   consumer:
     build: consumer/.
     depends_on:
-        my-rabbit:
-                condition: service_healthy
+      - "my-rabbit"
   producer:
     build: producer/.
     depends_on:
-        my-rabbit:
-                condition: service_healthy
+      - "my-rabbit"
