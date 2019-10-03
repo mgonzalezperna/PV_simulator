@@ -1,0 +1,5 @@
+-producer and consumer must wait that rabbitmq is stable.
+-docker-compose v3 doesnt support depends_on: condition to wait for a healthcheck.
+-dockerize could be the workaround to jump this issue.
+-but wait-for-it bash script seems like a more suitable solution.
+-
