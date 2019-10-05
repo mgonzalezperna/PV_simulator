@@ -1,20 +1,23 @@
-from messenger_service import MessengerService
+"""
+Module to produce data that emulates the power consumption of a house.
+"""
+
 import threading
 import time
 import random
+from messenger_service import MessengerService
 
 
-class Meter(object):
-    ''' 
-    Mocks measurements of a house's power consumption.
+class Meter():
+    """Mocks measurements of a house's power consumption.
     The run() method will be started and it will run in the background
-    until the application exits.
-    '''
+    until the application exits."""
+
     def __init__(self, interval=1):
-        '''
+        """
         Starts a daemonized thread mocking measurements.
         Param interval is used to sleep interval between messages, in seconds.
-        '''
+        """
         self.interval = interval
         thread = threading.Thread(target=self.run, args=())
         self._stop = threading.Event()
@@ -31,7 +34,7 @@ class Meter(object):
         return self._stop.isSet()
 
     def run(self):
-        ''' Method that runs forever '''
+        """ Method that runs forever """
         broker = MessengerService("meter")
         print(broker.channel)
         while True:
