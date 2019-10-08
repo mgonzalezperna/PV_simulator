@@ -5,7 +5,7 @@ Module to produce data that emulates the power consumption of a house.
 import threading
 import time
 import random
-from messenger_service import MessengerService
+from pv_emulator.src.messenger_service import MessengerService
 
 
 class Meter():
