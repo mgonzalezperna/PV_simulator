@@ -26,13 +26,14 @@ class Meter:
             'data': measurement
         }
 
-    def send_data(self, package, queue_name=None):
+    def send_data(self, payload, queue_name=None):
         """Sends the data to the broker"""
-        encoded_package = json.dumps(package)
+        encoded_payload = json.dumps(payload)
+        print(queue_name)
         if queue_name is None:
-            self.broker.send_measurement(encoded_package)
+            self.broker.send_measurement(encoded_payload)
         else:
-            self.broker.send_measurement(encoded_package, queue_name)
+            self.broker.send_measurement(encoded_payload, queue_name)
 
 def main(total_intervals=1):
     """
@@ -41,8 +42,8 @@ def main(total_intervals=1):
     """
     meter = Meter()
     for interval in range(total_intervals):
-        data = meter.get_data()
-        meter.send_data(data)
+        payload = meter.get_data()
+        meter.send_data(payload)
         time.sleep(0.5)
 
 if __name__ == '__main__':
