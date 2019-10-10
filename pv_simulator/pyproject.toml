@@ -14,7 +14,7 @@ numpy = "^1.17"
 pytest = "^3.0"
 
 [tool.poetry.scripts]
-producer = "pv_simulator.power_house_simulator:main(100)"
+producer = "pv_simulator.power_house_simulator:main"
 consumer = "pv_simulator.pv_simulator:main"
 
 [build-system]
