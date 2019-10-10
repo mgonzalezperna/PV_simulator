@@ -23,7 +23,7 @@ class Meter:
         measurement = random.randrange(0, 9000, 1)
         return {
             'date': measurement_time,
-            'data': measurement
+            'measurement': measurement
         }
 
     def send_data(self, payload, queue_name=None):
@@ -41,7 +41,7 @@ def main(total_intervals=1):
     Param total_intervals is used to set an ending to the sender loop.
     """
     meter = Meter()
-    for interval in range(total_intervals):
+    for _interval in range(total_intervals):
         payload = meter.get_data()
         meter.send_data(payload)
         time.sleep(0.5)
