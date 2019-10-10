@@ -11,13 +11,13 @@ from pv_simulator.messenger_service import MessengerService
 
 
 def head_curve(x):
-    return 2.5 * x - 16
+    return 160 * x - 880
 
 def tail_curve(x):
-    return -1 * x + 21
+    return -100 * x + 2100
 
 def center_curve(x):
-    return -0.8287 * np.power(x, 2) + 22.95 * x - 126.6
+    return -82.87 * np.power(x, 2) + 2295 * x - 12660
 
 def curve(time):
     value_to_especialize = time.hour + time.minute/60
