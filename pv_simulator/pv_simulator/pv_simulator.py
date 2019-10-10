@@ -55,18 +55,12 @@ def curve(time):
     produced by a solar panel.
     """
     value_to_especialize = time.hour + time.minute/60
-    print(value_to_especialize)
-    if 5.75 < time.hour < 8:
-        print("head")
+    if 5.5 <= time.hour < 8:
         value = head_curve(value_to_especialize)
-    elif 8 <= time.hour <= 20:
-        print("main")
+    elif 8 <= time.hour < 20:
         value = center_curve(value_to_especialize)
-    elif 20 < time.hour < 21:
-        print("tail")
+    elif 20 <= time.hour < 21:
         value = tail_curve(value_to_especialize)
-    elif 24 < time.hour < 0:
-        raise Exception
     else:
         value = 0
     return value
