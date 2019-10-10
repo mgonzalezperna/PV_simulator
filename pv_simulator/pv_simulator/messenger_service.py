@@ -3,7 +3,6 @@ Module to wrap comunication with a broker.
 """
 import pika
 
-
 class MessengerService:
     """
     This service provides an interface to send messages to any consumer.
@@ -36,11 +35,8 @@ class MessengerService:
         """ Method to send measurement through channel. """
         if queue_name is None:
             queue_name = self.queue_name
-        try:
-            self.channel.basic_publish(
-                exchange='', routing_key=queue_name, body=measurement)
-        except Exception:
-            raise Exception
+        self.channel.basic_publish(
+            exchange='', routing_key=queue_name, body=measurement)
         print("[x] Sent message")
 
     def consume_measurements(self, callback, queue_name=None):
