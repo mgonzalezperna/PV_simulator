@@ -2,11 +2,13 @@
 Module to simulate the output of a PhotoVoltaic generator.
 """
 
+import csv
 import json
-import numpy as np
-import time
 import random
+import os.path
 from datetime import datetime
+
+import numpy as np
 from pv_simulator.messenger_service import MessengerService
 
 
