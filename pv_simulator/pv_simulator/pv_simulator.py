@@ -12,14 +12,41 @@ import numpy as np
 from pv_simulator.messenger_service import MessengerService
 
 
+def linear_function(a, b, x):
+    """
+    A generic lineal function.
+    a coeficient is slope.
+    b is intercept.
+    """
+    return a*x + b
+
+def quadratic_function(a, b, c, x):
+    """
+    A generic quadratic function.
+    a coeficient is parabola branches amplitude.
+    b is displacement of pivot point over x=y linear function.
+    c is Y axis displacement.
+    """
+    return a*np.power(x, 2) + b*x + c
+
 def head_curve(x):
-    return 160 * x - 880
+    """First segment of curve function."""
+    a = 160
+    b = -880
+    return linear_function(a, b, x)
 
 def tail_curve(x):
-    return -100 * x + 2100
+    """Last segment of curve function."""
+    a = -100
+    b = 2100
+    return linear_function(a, b, x)
 
 def center_curve(x):
-    return -82.87 * np.power(x, 2) + 2295 * x - 12660
+    """Main segment of curve function."""
+    a = -82.87
+    b = 2295
+    c = - 12660
+    return quadratic_function(a, b, c, x)
 
 def curve(time):
     value_to_especialize = time.hour + time.minute/60
