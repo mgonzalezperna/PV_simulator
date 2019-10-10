@@ -26,3 +26,7 @@
 *.log
 *.sql
 *.sqlite
+
+# Other #
+######################
+*.egg-info
