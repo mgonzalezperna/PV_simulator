@@ -7,7 +7,6 @@ authors = ["mgonzalezperna"]
 [tool.poetry.dependencies]
 python = "^3.7"
 pika = "^1.1"
-datetime = "^4.3"
 numpy = "^1.17"
 
 [tool.poetry.dev-dependencies]
