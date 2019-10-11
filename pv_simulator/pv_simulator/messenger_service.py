@@ -7,7 +7,7 @@ class MessengerService:
     """
     This service provides an interface to send messages to any consumer.
     """
-    def __init__(self, queue_name, broker_hostname='localhost',
+    def __init__(self, queue_name, broker_hostname='broker',
                  broker_port=5672, broker_user='guest', broker_passwd='guest'):
         """ Constructor. Param queue_name is the queue routing key """
         self.broker_hostname = broker_hostname
