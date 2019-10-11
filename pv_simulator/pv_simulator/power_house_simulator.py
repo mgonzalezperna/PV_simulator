@@ -1,10 +1,10 @@
 """
 Module to produce data that emulates the power consumption of a house.
 """
-import datetime
 import json
-import random
 import time
+import random
+import datetime
 from pv_simulator.messenger_service import MessengerService
 
 
@@ -35,7 +35,7 @@ class Meter:
         else:
             self.broker.send_measurement(encoded_payload, queue_name)
 
-def main(total_intervals=1):
+def main(total_intervals=100):
     """
     Sender method
     Param total_intervals is used to set an ending to the sender loop.
