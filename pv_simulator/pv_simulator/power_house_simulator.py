@@ -29,7 +29,6 @@ class Meter:
     def send_data(self, payload, queue_name=None):
         """Sends the data to the broker"""
         encoded_payload = json.dumps(payload)
-        print(queue_name)
         if queue_name is None:
             self.broker.send_measurement(encoded_payload)
         else:
