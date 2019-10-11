@@ -15,7 +15,7 @@ from pv_simulator.messenger_service import MessengerService
 def linear_function(a, b, x):
     """
     A generic lineal function.
-    a coeficient is slope.
+    a coefficient is slope.
     b is intercept.
     """
     return a*x + b
@@ -23,7 +23,7 @@ def linear_function(a, b, x):
 def quadratic_function(a, b, c, x):
     """
     A generic quadratic function.
-    a coeficient is parabola branches amplitude.
+    a coefficient is parabola branches amplitude.
     b is displacement of pivot point over x=y linear function.
     c is Y axis displacement.
     """
