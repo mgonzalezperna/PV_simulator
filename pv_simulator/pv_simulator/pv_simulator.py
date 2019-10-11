@@ -70,9 +70,9 @@ class Consumer:
     def __init__(self):
         """Starts the PV panel queue."""
         self.broker = MessengerService('meter')
-        self.broker.consume_measurements(self.process_meassurement)
+        self.broker.consume_measurements(self.process_measurement)
 
-    def process_meassurement(self, _ch, _method, _properties, body):
+    def process_measurement(self, _ch, _method, _properties, body):
         """The callback function executed when a new payload arrives."""
         message_data = json.loads(body)
         collected_measurements = {
@@ -81,12 +81,12 @@ class Consumer:
             'pv_raw_output': self.get_pv_raw_output_power(message_data['date']),
             'total_output': self.get_pv_output_power(body),
         }
-        self.persist_measurements(collected_measurements)
         print(" [x] Received %r" % body)
+        self.persist_measurements(collected_measurements)
 
     def persist_measurements(self, measurements_dict):
         """Save the measurements into a csv file."""
-        filename = "measurements.csv"
+        filename = "export/measurements_results.csv"
         file_exist = os.path.isfile(filename)
         headers = measurements_dict.keys()
         if file_exist:
