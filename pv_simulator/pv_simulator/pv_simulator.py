@@ -63,7 +63,7 @@ def curve(time):
         value = tail_curve(value_to_especialize)
     else:
         value = 0
-    return value * random.randrange(85, 105)/100 # The product with a random value emulates the noise
+    return value * random.randrange(85, 100)/100 # The product with a random value emulates the noise
 
 class Consumer:
     """The data consumer from the meter, also outputs the data to csv."""
