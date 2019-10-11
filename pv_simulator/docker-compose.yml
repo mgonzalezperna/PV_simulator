@@ -16,6 +16,8 @@ services:
       && chmod +x wait-for-it.sh
       &&./wait-for-it.sh broker:5672
       && poetry run consumer"
+    volumes:
+      - ./:/usr/src/app/export
   producer:
     build: .
     depends_on:
