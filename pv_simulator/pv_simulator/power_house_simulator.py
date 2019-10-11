@@ -14,7 +14,12 @@ class Meter:
     def __init__(self):
         """ Sets up the the meter."""
         self.starttime = datetime.datetime(2019, 10, 1, 0, 0)
-        self.broker = MessengerService('meter')
+
+    def setup_broker(self, queue_name='meter', broker_hostname='broker',
+                     broker_port=5672, broker_user='guest', broker_passwd='guest'):
+        """Set up the messenger service and its queue."""
+        self.broker = MessengerService(queue_name, broker_hostname, broker_port,
+                                       broker_user, broker_passwd)
 
     def get_data(self):
         """Return a dict with the data to send"""
@@ -40,6 +45,7 @@ def main(total_intervals=100):
     Param total_intervals is used to set an ending to the sender loop.
     """
     meter = Meter()
+    meter.setup_broker()
     for _interval in range(total_intervals):
         payload = meter.get_data()
         meter.send_data(payload)

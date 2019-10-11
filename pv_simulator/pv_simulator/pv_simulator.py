@@ -67,10 +67,15 @@ def curve(time):
 
 class Consumer:
     """The data consumer from the meter, also outputs the data to csv."""
-    def __init__(self):
+    def start(self):
         """Starts the PV panel queue."""
-        self.broker = MessengerService('meter')
         self.broker.consume_measurements(self.process_measurement)
+
+    def setup_broker(self, queue_name='meter', broker_hostname='broker',
+                     broker_port=5672, broker_user='guest', broker_passwd='guest'):
+        """Set up the messenger service and its queue."""
+        self.broker = MessengerService(queue_name, broker_hostname, broker_port,
+                                       broker_user, broker_passwd)
 
     def process_measurement(self, _ch, _method, _properties, body):
         """The callback function executed when a new payload arrives."""
@@ -114,6 +119,8 @@ class Consumer:
 def main():
     """Entry point for consumer."""
     consumer = Consumer()
+    consumer.setup_broker()
+    consumer.start()
 
 if __name__ == '__main__':
     main()
