@@ -1,21 +1,20 @@
 version: '3'
 services:
   broker:
-    image: "rabbitmq:3-management"
+    image: "rabbitmq:3"
     hostname: "broker"
     labels:
-      NAME: "some-rabbit"
+      NAME: "rabbit-broker"
     environment:
       PYTHONBUFFERED: 0
   consumer:
     build: .
     depends_on:
       - "broker"
-    #wait-for-it is used to check if rabbit is stable.
     command: >
       sh -c "curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -s --output wait-for-it.sh
       && chmod +x wait-for-it.sh
-      &&./wait-for-it.sh my-rabbit:5672
+      &&./wait-for-it.sh broker:5672
       && poetry run consumer"
   producer:
     build: .
@@ -24,5 +23,5 @@ services:
     command: >
       sh -c "curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -s --output wait-for-it.sh
       && chmod +x wait-for-it.sh
-      &&./wait-for-it.sh my-rabbit:5672
+      &&./wait-for-it.sh broker:5672
       && poetry run producer"
