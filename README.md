@@ -1,6 +1,27 @@
-﻿## Logbook
+﻿## PV Simulator
 
-### proto - Bare minimum.
+This is a simulated producer -> consumer model using a broker as link between both.
+The Producer emulates the regular power consumption of a house.
+The Consumer mocks a PV generator output and adds the Producer output consumption with the energy produced by the generator.
+After that, it generates a .csv file with the date of the register, the power consumed, the pv output and the total calculated output.
+
+### How to run it
+
+Inside the directory
+
+`PV_simulator/pv_simulator`
+
+run
+
+`docker-compose up`
+
+The .csv output will be generated at
+
+`PV_simulator/pv_simulator`
+
+## Logbook
+
+### Proto - Bare minimum.
 
 * Producer and consumer must wait for rabbitmq to be stable.
 * Docker-compose v3 doesn’t support depends_on: condition to wait for a health check.
@@ -16,7 +37,7 @@
 
 * Decided to use Poetry to handle the project and its dependencies and, later on, added scripts to run the entry points.
 
-### Meter - alpha
+### Meter (alpha).
 
 * Started to design the meter as daemon thread launcher.
 * By doing this, I could launch other tasks as the measurements are sent.
@@ -33,7 +54,7 @@
 * Almost the entire Messenger class was revisited. Sending kargs instead of globals to set up the service is a smarter solution.
 * Also, Meter beta now sends measurements in a configurable loop, not using threads.
 
-### PV generator alpha.
+### PV generator (alpha).
 
 * At first I thought that I could use historic data of solar irradiation to get physics parameters and mock the curve of a fixed PV panel.
 * But after a few minutes of research, I decided that it wasn’t worth it right now.
@@ -45,7 +66,7 @@
 * For some reason, I named the project as *emulator* instead of *simulator*
 * Decided to refactor the project and fixed this.
 
-### PV generator beta.
+### PV generator (beta).
 
 * I reviewed the coefficients of the functions. Also, I decided to model the general functions from outside of the head-main-tail structure.
 * Also, defined a callback function to process the json payloads.
