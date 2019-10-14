@@ -90,6 +90,14 @@ The .csv output will be generated at
 * The solution was to refactor the classes and add a 'set up broker' method outside of the constructors.
 * After that, I could test the business logic rules and add the tests to the repo.
 
+### Jupiter notebook. 
+
+* As an adition, i added a Jupyter notebook that plots the curves and tries to help to overcome the lack of UI. 
+
 ## What i would like to improve.
 
-* I would love to add a graphic interface to check at realtim
+* I would love to add a web graphic interface to render the outputs at realtime.
+* A black box test mocking rabbitmq.
+* Add Integrity Tests.
+* Try to uncouple more rabbitmq in case i want to change the broker in the future.
+* Maybe add parameters to mock PV generators from differents places around the world.
