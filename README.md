@@ -89,3 +89,7 @@ The .csv output will be generated at
 * This is a bad thing because only a few methods of those classes needed a broker, not all of them. So, the class could still 'do things' without the broker.
 * The solution was to refactor the classes and add a 'set up broker' method outside of the constructors.
 * After that, I could test the business logic rules and add the tests to the repo.
+
+## What i would like to improve.
+
+* I would love to add a graphic interface to check at realtim
