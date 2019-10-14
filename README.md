@@ -9,7 +9,7 @@ After that, it generates a .csv file with the date of the register, the power co
 
 Inside the directory
 
-`PV_simulator\pv_simulator`
+`PV_simulator/pv_simulator`
 
 run
 
@@ -17,7 +17,7 @@ run
 
 The .csv output will be generated at
 
-`PV_simulator\pv_simulator`
+`PV_simulator/pv_simulator`
 
 ## Logbook
 
