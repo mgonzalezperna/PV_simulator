@@ -5,7 +5,7 @@ The Producer emulates the regular power consumption of a house.
 The Consumer mocks a PV generator output and adds the Producer output consumption with the energy produced by the generator.
 After that, it generates a .csv file with the date of the register, the power consumed, the pv output and the total calculated output.
 
-### How to run it
+### How to run it.
 
 Inside the directory
 
@@ -18,6 +18,10 @@ run
 The .csv output will be generated at
 
 `PV_simulator/pv_simulator`
+
+Also, there is a Jupyter notebook with the curves plotted at
+
+`PV_simulator/pv_simulator/Visual_example.ipynb`
 
 ## Logbook
 
